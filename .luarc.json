@@ -1,0 +1,12 @@
+{
+  "diagnostics": {
+    "disable": [
+    ]
+  },
+  "workspace.library": [
+    "${3rd}/lovr/library",
+  ],
+  "runtime": {
+    "version": "LuaJIT"
+  }
+}
