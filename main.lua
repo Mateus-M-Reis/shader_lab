@@ -1,16 +1,32 @@
+local pi = math.pi
+
 -- main.lua
 lovr.window = require('lib.lovr-window')
 
-local kaleidoscope
+local shader, kaleidoscope, star_nest
 
 function lovr.load()
   lovr.window.setMode(960, 540, { borderless = true, x = 0, y = 540 })
 
-  kaleidoscope = require('shaders/kaleidoscope')
+  kaleidoscope = require('shaders.kaleidoscope')
+  star_nest = require('shaders.star-nest')
+
+  shader = kaleidoscope
 end
 
 function lovr.draw(pass)
-  pass:setShader(kaleidoscope)
+  pass:setShader(shader)
   pass:plane()
   pass:setShader()
+end
+
+function lovr.keypressed(key, scancode, is_repeat)
+
+  -- map to individual keys for now
+  if key == '1' then
+    shader = kaleidoscope
+  elseif key == '2' then
+    shader = star_nest
+
+  end
 end
