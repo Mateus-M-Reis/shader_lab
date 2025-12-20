@@ -3,27 +3,24 @@ local pi = math.pi
 -- main.lua
 lovr.window = require('lib.lovr-window')
 
-local shader, vertices, mesh,
+local shader,
 
-  kaleidoscope, star_nest, fire
+  kaleidoscope, star_nest, fire, flame
 
 function lovr.load()
   lovr.window.setMode(960, 540, { borderless = true, x = 0, y = 540 })
 
-  vertices = {{-1, -1, 0}, {1, -1, 0}, {-1, 1, 0}, {1, 1, 0}}
-  mesh = lovr.graphics.newMesh(vertices, 'cpu')
-
   kaleidoscope = require('shaders.kaleidoscope')
   star_nest = require('shaders.star-nest')
   fire = require('shaders.fire')
+  flame = require('shaders.flame')
 
-  shader = star_nest
+  shader = kaleidoscope
 end
 
 function lovr.draw(pass)
   pass:setShader(shader)
   pass:plane()
-  --pass:draw(mesh)
   pass:setShader()
 end
 
@@ -36,5 +33,7 @@ function lovr.keypressed(key, scancode, is_repeat)
     shader = star_nest
   elseif key == '3' then
     shader = fire
+  elseif key == '4' then
+    shader = flame
   end
 end

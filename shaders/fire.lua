@@ -1,5 +1,5 @@
 return lovr.graphics.newShader([[
-  // Vertex Shader
+  
   out vec2 var_texcoord0;
 
   vec4 lovrmain() {
@@ -14,8 +14,9 @@ return lovr.graphics.newShader([[
     
     return gl_Position;
   }
+
 ]], [[
-  // Fragment Shader
+  
   mat3 rotm;
 
   mat3 rot(vec3 v, float angle)
@@ -76,4 +77,5 @@ return lovr.graphics.newShader([[
     col = col * length(col) * 0.001;
     return vec4(col, 1.0);	
   }
+
 ]])

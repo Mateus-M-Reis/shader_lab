@@ -1,6 +1,7 @@
 {
   "diagnostics": {
     "disable": [
+      'lowecase-global',
     ]
   },
   "workspace.library": [
